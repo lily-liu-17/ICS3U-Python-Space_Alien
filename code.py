@@ -9,6 +9,51 @@ import stage
 
 import constants
 
+def menu_scene():
+    # this function is he main game game_scene
+    
+    # image banks for CircutPython
+    image_bank_mt_background = stage.Bank.from_bmp16("mt_game_studio.bmp")
+    
+    # add text objects
+    text = []
+    text1 = stage.Text(width=29, height=12, font=None, palette=constants.RED_PALETTE, buffer=None)
+    text1.move(20, 10)
+    text1.text("MT Game Studios")
+    text.append(text1)
+    
+    text2 = stage.Text(width=29, height=12, font=None, palette=constants.RED_PALETTE, buffer=None)
+    text2.move(40, 110)
+    text2.text("Press Start")
+    text.append(text2)
+    
+    # set the background image to 0 in the image blank
+    # and the size (10 x 8 tiles of size 16 x 16)
+    background = stage.Grid(image_bank_mt_background, 
+                            constants.SCREEN_X, constants.SCREEN_Y)
+    
+    # set the background to image 0 in the image blanks
+    # and set the frame rate to 60fps
+    game = stage.Stage(ugame.display, constants.FPS)
+    # set the layer of all sprites, item show up in order
+    game.layers = text + [background]
+    # render all sprites
+    # most likely you will only render the background once per game
+    game.render_block()
+    
+    # repeat forever, game loop
+    while True:
+        pass # just a placeholder for now
+        # get user input
+        keys = ugame.buttons.get_pressed()
+        
+      
+        if keys & ugame.K_START !=0:
+            game_scene()
+ 
+        # redraw sprites
+        game.tick()
+
 def game_scene():
     # this function is he main game game_scene
     
@@ -47,7 +92,7 @@ def game_scene():
     # render all sprites
     # most likely you will only render the background once per game
     game.render_block()
-    
+     
     # repeat forever, game loop
     while True:
         pass # just a placeholder for now
@@ -101,4 +146,4 @@ def game_scene():
         game.tick()
 
 if __name__ == "__main__":
-    game_scene()
+    menu_scene() 
