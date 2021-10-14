@@ -176,7 +176,7 @@ def game_scene():
     for laser_number in range(constants.TOTAL_NUMBER_OF_LASERS):
         a_single_laser = stage.Sprite(image_bank_sprites, 10,
                                       constants.OFF_SCREEN_X,
-                                      constants.OFF_SCREEN_X)
+                                      constants.OFF_SCREEN_Y)
         lasers.append(a_single_laser)                              
     
     # set the background to image 0 in the image blanks
@@ -215,13 +215,13 @@ def game_scene():
         
         if keys & ugame.K_RIGHT !=0:
             if ship.x < constants.SCREEN_X - constants.SPRITE_SIZE:
-                ship.move(ship.x + constants.SPRITE_MOVEMENT_SPEED, ship.y)
+                ship.move((ship.x + constants.SPRITE_MOVEMENT_SPEED), ship.y)
             else:
-                ship.move(constants.SCREEN_X - constants.SPRITE_SIZE, ship.y)
+                ship.move((constants.SCREEN_X - constants.SPRITE_SIZE), ship.y)
                 
         if keys & ugame.K_LEFT !=0:
             if ship.x > 0:
-                ship.move(ship.x - 1, ship.y)
+                ship.move((ship.x - constants.SPRITE_MOVEMENT_SPEED), ship.y)
             else:
                 ship.move(0, ship.y)
 
