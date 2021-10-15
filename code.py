@@ -96,8 +96,8 @@ def menu_scene():
     
     # set the background image to 0 in the image blank
     # and the size (10 x 8 tiles of size 16 x 16)
-    background = stage.Grid(image_bank_mt_background, 
-                            constants.SCREEN_X, constants.SCREEN_Y)
+    background = stage.Grid(image_bank_mt_background, constants.SCREEN_X, 
+                            constants.SCREEN_Y)
     
     # set the background to image 0 in the image blanks
     # and set the frame rate to 60fps
@@ -113,7 +113,7 @@ def menu_scene():
         # get user input
         keys = ugame.buttons.get_pressed()
         
-      
+        # satrt button selected
         if keys & ugame.K_START !=0:
             game_scene()
  
@@ -257,7 +257,7 @@ def game_scene():
                                           aliens[alien_number].y +
                                             constants.ALIEN_SPEED)
                 if aliens[alien_number].y > constants.SCREEN_Y:
-                    lasers[laser_number].move(constants.OFF_SCREEN_X,
+                    aliens[alien_number].move(constants.OFF_SCREEN_X,
                                               constants.OFF_SCREEN_Y)
                     show__aliens()                          
         
